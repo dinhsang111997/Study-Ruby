@@ -3,9 +3,13 @@ class CoursesController < ApplicationController
 
   # GET /courses or /courses.json
   def index
-    @courses = Course.all
+    if params[:title]
+      # Search title
+      @courses = Course.where('title LIKE ?', "%#{params[:title]}%") #case-insensitive
+    else
+      @courses = Course.all
+    end
   end
-
   # GET /courses/1 or /courses/1.json
   def show
   end
@@ -22,7 +26,7 @@ class CoursesController < ApplicationController
   # POST /courses or /courses.json
   def create
     @course = Course.new(course_params)
-    # tu dong them gmail nguoi dung vao cot User
+    # tu dong them gmail nguoi dung vao cot 
     @course.user = current_user
 
     respond_to do |format|
