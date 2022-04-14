@@ -11,7 +11,6 @@ import 'bootstrap/dist/js/bootstrap';
 import 'channels';
 import Turbolinks from 'turbolinks';
 require('stylesheets/application.scss');
-
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();

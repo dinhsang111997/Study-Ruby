@@ -22,6 +22,8 @@ class CoursesController < ApplicationController
   # POST /courses or /courses.json
   def create
     @course = Course.new(course_params)
+    # tu dong them gmail nguoi dung vao cot User
+    @course.user = current_user
 
     respond_to do |format|
       if @course.save
